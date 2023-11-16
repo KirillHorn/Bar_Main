@@ -32,7 +32,7 @@
       <td class="align-middle">{{$order ->address}}</td>
       <td class="align-middle">{{$order ->created_at}}</td>
       <td class="align-middle"><a href=""><button type="submit" class="btn btn-success">Принять</button></a></td>
-      <td class="align-middle"><a href=""><button type="submit" class="btn btn-danger">Отклонить</button></a></td>
+      <td class="align-middle"><a href="{{ route('ordersDeny', ['id_status' => $order->id]) }}"><button type="submit" class="btn btn-danger">Отклонить</button></a></td>
     </tr>
     @empty
       <p>Тут нет заявок.</p>

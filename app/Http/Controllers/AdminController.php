@@ -88,6 +88,19 @@ class AdminController extends Controller
         $orders = DB::table('orders')->join('baskets', 'orders.basket_id', '=', 'baskets.id')->join('products', 'baskets.product_id', '=', 'products.id')->join('users', 'baskets.user_id', '=', 'users.id')->join('payments', 'orders.id_type', '=', 'payments.id')->join('status', 'orders.id_status', '=', 'status.id')->where('id_status', 3)->paginate(10);
         return view('admin.ordersDeny', compact('orders'));
     }
+    public function orderDeny(order $id_status){
+        $orde = order::find($id_status);
+        $flights = order::find($id_status)
+               ->get();
+
+        dd($flights);
+        $order = DB::table('orders')->where('id',$id_stat)->update(['id_status'=>2]);
+
+
+
+                $orders = DB::table('orders')->join('baskets', 'orders.basket_id', '=', 'baskets.id')->join('products', 'baskets.product_id', '=', 'products.id')->join('users', 'baskets.user_id', '=', 'users.id')->join('payments', 'orders.id_type', '=', 'payments.id')->join('status', 'orders.id_status', '=', 'status.id')->where('id_status', 3)->paginate(10);
+        return view('admin.ordersDeny', compact('orders'));
+}
         public function ordersNew(){
             $orders = DB::table('orders')->join('baskets', 'orders.basket_id', '=', 'baskets.id')->join('products', 'baskets.product_id', '=', 'products.id')->join('users', 'baskets.user_id', '=', 'users.id')->join('payments', 'orders.id_type', '=', 'payments.id')->join('status', 'orders.id_status', '=', 'status.id')->where('id_status', 1)->paginate(10);
             return view('admin.ordersNew', compact('orders'));
