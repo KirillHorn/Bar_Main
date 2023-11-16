@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -84,20 +85,17 @@ class AdminController extends Controller
 
 
     public function ordersDeny(){
-        $orders = order::where('id_status',3)->paginate(10);
-        return view('admin.ordersNew', compact('orders'));
+        $orders = DB::table('orders')->join('baskets', 'orders.basket_id', '=', 'baskets.id')->join('products', 'baskets.product_id', '=', 'products.id')->join('users', 'baskets.user_id', '=', 'users.id')->join('payments', 'orders.id_type', '=', 'payments.id')->join('status', 'orders.id_status', '=', 'status.id')->where('id_status', 3)->paginate(10);
+        return view('admin.ordersDeny', compact('orders'));
     }
         public function ordersNew(){
-            $orders = order::where('id_status',1)->paginate(10);
+            $orders = DB::table('orders')->join('baskets', 'orders.basket_id', '=', 'baskets.id')->join('products', 'baskets.product_id', '=', 'products.id')->join('users', 'baskets.user_id', '=', 'users.id')->join('payments', 'orders.id_type', '=', 'payments.id')->join('status', 'orders.id_status', '=', 'status.id')->where('id_status', 1)->paginate(10);
             return view('admin.ordersNew', compact('orders'));
     }
-        public function ordersProg(){
-        return view('admin.ordersProg');
-    }
-    public function ordersSub(){
-        $orders = order::where('id_status',2)->paginate(10);
 
-    return view('admin.ordersSub', compact('orders'));
+    public function ordersSub(){
+        $orders = DB::table('orders')->join('baskets', 'orders.basket_id', '=', 'baskets.id')->join('products', 'baskets.product_id', '=', 'products.id')->join('users', 'baskets.user_id', '=', 'users.id')->join('payments', 'orders.id_type', '=', 'payments.id')->join('status', 'orders.id_status', '=', 'status.id')->where('id_status', 2)->paginate(10);
+        return view('admin.ordersSub', compact('orders'));
 }
     public function serviceRedact(){
 

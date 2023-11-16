@@ -15,7 +15,8 @@ class MainController extends Controller
         return view('product',["prod" => $prod]);
   }
     public function catalog() {
-        return view('catalog');
+        $products = Product::paginate(6);
+        return view('catalog', compact('products'));
     }
     public function basket() {
         return view('basket');

@@ -21,17 +21,17 @@
   <tbody>
     @forelse($orders as $order)
     <tr>
-      <td class="align-middle"></td>
-      <td class="align-middle"></td>
-      <td class="align-middle"></td>
-      <td class="align-middle"></td>
-      <td class="align-middle"></td>
-      <td class="align-middle"></td>
-      <td class="align-middle"></td>
-      <td class="align-middle"></td>
-      <td class="align-middle"></td>
-      <td class="align-middle"></td>
-      <td class="align-middle text-success"></td>
+      <td class="align-middle">{{$order ->id}}</td>
+      <td class="align-middle">{{$order ->name}}</td>
+      <td class="align-middle">{{$order ->phone}}</td>
+      <td class="align-middle">{{$order ->email}}</td>
+      <td class="align-middle">{{$order ->title_prod}}</td>
+      <td class="align-middle">{{$order ->amoint}}</td>
+      <td class="align-middle">{{$order ->sum}}</td>
+      <td class="align-middle">{{$order ->title_pay}}</td>
+      <td class="align-middle">{{$order ->address}}</td>
+      <td class="align-middle">{{$order ->created_at}}</td>
+      <td class="align-middle text-success">Принято</td>
     </tr>
    @empty
       <p>Тут нет заявок.</p>

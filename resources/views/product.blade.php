@@ -9,7 +9,7 @@
         <img src="/img/element_product.png" class="element_top">
        </div>
             <div class="product_text">
-                <h2>{{$prod ->title}}</h2>
+                <h2>{{$prod ->title_prod}}</h2>
                 <p><span>Описание:</span> {{$prod ->description}}</p>
                 <p>Цена: <span>{{$prod ->cost}}</span></p>
             </div>

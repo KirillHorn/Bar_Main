@@ -39,7 +39,7 @@
                 @forelse($products as $product)
                 <div class="product_block">
                     <img src="img/{{$product ->img}}">
-                    <p>{{$product ->title}}</p>
+                    <p>{{$product ->title_prod}}</p>
                     <span>₽{{$product ->cost}}</span>
                     <a style="color:#FCEE0A;" href="/product/{{$product ->id}}">Купить</a>
                 </div>
