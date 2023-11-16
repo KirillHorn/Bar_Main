@@ -19,7 +19,7 @@
     </tr>
   </thead>
   <tbody>
-    <!-- @forelse($orders as $order) -->
+    @forelse($orders as $order)
     <tr>
       <td class="align-middle"></td>
       <td class="align-middle"></td>
@@ -33,9 +33,9 @@
       <td class="align-middle"></td>
       <td class="align-middle text-success"></td>
     </tr>
-   
+   @empty
       <p>Тут нет заявок.</p>
-    <!-- @endforelse -->
+    @endforelse
   </tbody>
   </table>
 </div>

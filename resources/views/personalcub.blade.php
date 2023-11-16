@@ -21,10 +21,13 @@
                   
                     </div>
                     <a href="signout"><button class="logout_pers">Выйти</button></a>
-
-                    <a href="/admin">Админ панель для ебланов </a>
+                 @if (  $personalInfo->id == 7 )
+                    <a href="/admin/ordersSub">Админ панель  </a>
+                    @endif
                         </div>
+
                 </div>
+                @if (  $personalInfo->id !== 7 )
                     <div>
                         <h2>Ваши заказы</h2>
                         <img src="/img/el1.png" class="element_personal">
@@ -36,6 +39,7 @@
                             </div>
                     </div>
             </div>
+            @endif
     </div>
 </section>
 

@@ -28,11 +28,11 @@ class AuthController extends Controller
       "email" => $user['email'],
       "password" => $user['password']
      ]))
-     {  if ( Auth::attempt ( ["email" => $user['email'] = "admin@bboard.ru" ,
-      "password" => $user['password'] = "admin@bboard.ru"])) {
+     {  if ( Auth::attempt ( ["email" => $user['email'] == "admin@bboard.ru" ,
+      "password" => $user['password'] == "admin@bboard.ru"])) {
       return redirect('/admin/ordersNew')->with('success',"Авторизация прошла успешно");
      } else {
-      return redirect('/')->with('success',"Авторизация прошла успешно");
+      return redirect('/personalcub')->with('success',"Авторизация прошла успешно");
      }
      }
      return redirect()->back()->with("error","Неверный логин или пароль");

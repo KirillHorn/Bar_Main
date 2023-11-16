@@ -84,7 +84,8 @@ class AdminController extends Controller
 
 
     public function ordersDeny(){
-        return view('admin.ordersDeny');
+        $orders = order::where('id_status',3)->paginate(10);
+        return view('admin.ordersNew', compact('orders'));
     }
         public function ordersNew(){
             $orders = order::where('id_status',1)->paginate(10);
@@ -94,7 +95,7 @@ class AdminController extends Controller
         return view('admin.ordersProg');
     }
     public function ordersSub(){
-        $orders = order::crossJoin('status'->crossJoin('users'->crossJoin('baskets'->crossJoin('payments'->select('*')->where('orders.id_status','status.id')->where('orders.basket_id','baskets.id')->where('baskets.user_id','users.id')->where('orders.id_type','payments.id')->where('id_status',3)))))->paginate(10);
+        $orders = order::where('id_status',2)->paginate(10);
 
     return view('admin.ordersSub', compact('orders'));
 }
