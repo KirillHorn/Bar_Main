@@ -8,7 +8,7 @@
                     @forelse($products as $product)
                     <div class="catalog_block">
                         <img src="storage/img/{{$product ->img}}">
-                        <p>{{$product ->title_prod}}</p>
+                        <p>{{$product ->title}}</p>
                         <span>{{$product ->cost}}</span>
                         <a style="color:#FCEE0A;" href="/product/{{$product ->id}}">Купить</a>
                     </div>

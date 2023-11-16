@@ -8,11 +8,11 @@
 <section class="sidebar ">
     <div class="flex-shrink-0 p-3 bg-white sidebar_bacg" style="width: 280px;">
     <div class="d-flex align-items-center pb-1 mb-1 link-dark text-decoration-none">
-      <span class="fs-5 fw-semibold">ФИО</span>
+      <span class="fs-5 fw-semibold">Добро пожаловать {{ $user = Auth::user()->name;}}</span>
     </div>
-    <div class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom" >
+    <!-- <div class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom" >
       <span class="fs-7 ">tITLE</span>
-    </div>
+    </div> -->
     <ul class="list-unstyled ps-0">
       <li class="mb-1">
         <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
@@ -20,7 +20,7 @@
         </button>
         <div class="collapse show" id="home-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="../admin/serviceRedact" class="link-dark rounded">Добавить товар</a></li>
+            <li><a href="{{Route ('serviceRedact') }}" class="link-dark rounded">Добавить товар</a></li>
             <li><a href="/admin/serviceEdit" class="link-dark rounded">Редактирование товара</a></li>
           </ul>
         </div>
@@ -31,9 +31,9 @@
         </button>    
         <div class="collapse show" id="orders-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="/admin/ordersNew" class="link-dark rounded">Новые</a></li>
-            <li><a href="/admin/ordersSub" class="link-dark rounded">Выполнено</a></li>
-            <li><a href="/admin/ordersDeny" class="link-dark rounded">Отклонено</a></li>
+            <li><a href="../admin/ordersNew" class="link-dark rounded">Новые</a></li>
+            <li><a href="../admin/ordersSub" class="link-dark rounded">Выполнено</a></li>
+            <li><a href="../admin/ordersDeny" class="link-dark rounded">Отклонено</a></li>
           </ul>
         </div>
       </li>

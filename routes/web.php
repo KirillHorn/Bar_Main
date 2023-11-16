@@ -55,11 +55,11 @@ Route::get("/signout",[AuthController::class, 'signout'] ) ->name("signout");
 
 Route::get('/sidebar', [AuthController::class, 'personal']);
 
-// Route::group(['prefix' => 'admin', 'middleware' => 'admin', 'as' => 'admin.'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => 'admin', 'as' => 'admin.'], function () {
 
-//     Route::get('admin/ordersDeny', [AuthController::class , 'auth_valid']);
+    Route::get('admin/ordersDeny', [AuthController::class , 'auth_valid']);
   
-//   });
+  });
 
 
 Route::get("/admin",[AdminController::class, 'index']) -> name("admin");
@@ -67,13 +67,15 @@ Route::get("/admin",[AdminController::class, 'index']) -> name("admin");
 Route::post("/addproduct",[AdminController::class, 'addproduct']);
 
 
-Route::get('admin/ordersDeny', [AdminController::class,'ordersDeny'] );
+Route::get('/admin/ordersDeny', [AdminController::class,'ordersDeny'] );
 Route::get('admin/ordersDeny/{id_status}', [AdminController::class,'orderDeny'] )->name('ordersDeny');
-Route::get('admin/ordersNew', [AdminController::class,'ordersNew'] );
-Route::get('admin/ordersProg', [AdminController::class,'ordersProg'] );
-Route::get('admin/ordersSub', [AdminController::class,'ordersSub'] );
 
-Route::get('admin/serviceRedact', [AdminController::class,'serviceRedact'] );
+
+Route::get('/admin/ordersNew', [AdminController::class,'ordersNew'] );
+Route::get('/admin/ordersProg', [AdminController::class,'ordersProg'] );
+Route::get('/admin/ordersSub', [AdminController::class,'ordersSub'] );
+
+Route::get('admin/serviceRedact', [AdminController::class,'serviceRedact'] )->name('serviceRedact');
 
 Route::get('admin/serviceEdit', [AdminController::class,'serviceEdit'] );
 

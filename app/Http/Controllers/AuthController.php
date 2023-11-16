@@ -8,39 +8,39 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 class AuthController extends Controller
-{
-   public function auth() {
+{ 
+   public function auth() { //Открытие авторизации
     return view('auth.autho');
    }
-   public function auth_valid(Request $request)
-    {
-      $request->validate([
-         "email" => "required|email",
-         "password" => "required",
-     ], [
-         "email.required" => "Поле обязательно для заполнения!",
-         "email.email" => "Введите корректный email",
-         "password.required" => "Поле обязательно для заполнения!",
-     ]);
+   public function auth_valid(Request $request) //Авторизация
+   {
+     $request->validate([
+        "email" => "required|email",
+        "password" => "required",
+    ], [
+        "email.required" => "Поле обязательно для заполнения!",
+        "email.email" => "Введите корректный email",
+        "password.required" => "Поле обязательно для заполнения!",
+    ]);
 
-     $user = $request->only("email" , "password");
-     if (Auth::attempt( [
-      "email" => $user['email'],
-      "password" => $user['password']
-     ]))
-     {  if ( Auth::attempt ( ["email" => $user['email'] == "admin@bboard.ru" ,
-      "password" => $user['password'] == "admin@bboard.ru"])) {
-      return redirect('/admin/ordersNew')->with('success',"Авторизация прошла успешно");
-     } else {
-      return redirect('/personalcub')->with('success',"Авторизация прошла успешно");
-     }
-     }
-     return redirect()->back()->with("error","Неверный логин или пароль");
-   }
-   public function regist() {
+    $user = $request->only("email" , "password");
+    if (Auth::attempt( [
+     "email" => $user['email'],
+     "password" => $user['password']
+    ])) {
+    if(Auth::user()->id_role == 2) { // проверка на роль пользователя
+     return redirect('/admin/serviceEdit');
+ } else {
+     return redirect('/');
+ }
+
+    }
+    return redirect()->back()->with("error","Неверный логин или пароль");
+  }
+   public function regist() { //Открытие страница регистрации
       return view('auth.register');
    }
-   public function reg_valid(Request $request) {
+   public function reg_valid(Request $request) { // сама регистрация
       $request->validate([
          "email"=> "required|unique:users|email",
          "name"=> "required",
@@ -74,15 +74,15 @@ class AuthController extends Controller
       return redirect("/autho")->with("success","");
       return redirect()->back()->with("error","Произошла ошибка! Попробуйте снова!");
    }
-   public function signout() {
+   public function signout() { //выход из аутентификация
       Session::flush();
       Auth::logout();
       return redirect("/");
   }
-   public function personal() {
+   public function personal() { //открытие личного кабинета 
       return view('personalcub');
    }
-   public function personal_information () {
+   public function personal_information () { //вывод информации о пользователи 
        $personal = auth()->user();
        
     

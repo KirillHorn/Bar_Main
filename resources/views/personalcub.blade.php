@@ -4,7 +4,7 @@
 <section class="section_personalcub">
     <div class="container">
         <div class="logo_personal">
-            <h2>Добро Пожаловать Алексей   </h2>
+            <h2>Добро Пожаловать {{$personalInfo->name}}   </h2>
             <img src="/img/personalElement.png">
         </div>
             <div class="main_personal">
@@ -21,9 +21,7 @@
                   
                     </div>
                     <a href="signout"><button class="logout_pers">Выйти</button></a>
-                 @if (  $personalInfo->id == 7 )
-                    <a href="/admin/ordersSub">Админ панель  </a>
-                    @endif
+
                         </div>
 
                 </div>
