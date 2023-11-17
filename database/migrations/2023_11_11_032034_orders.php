@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('orders',function(Blueprint $table) {
             $table->id();
             $table->string("address",50);
+            $table->integer("amount");
+            $table->float("total");
             $table->foreignId('basket_id')->references('id')->on('baskets');
             $table->foreignId('id_type')->references('id')->on('payments');
             $table->foreignId('id_status')->references('id')->on('status');

@@ -14,9 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('baskets' , function (Blueprint $table ) {
-            $table->id();
-            $table->integer('amoint'); 
-            $table->float('sum');   
+            $table->id(); 
             $table->foreignId('product_id')->references('id')->on('products');
             $table->foreignId('user_id')->references('id')->on('users');
         });

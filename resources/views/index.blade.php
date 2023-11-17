@@ -38,8 +38,8 @@
             <div class="product_content">
                 @forelse($products as $product)
                 <div class="product_block">
-                    <img src="img/{{$product ->img}}">
-                    <p>{{$product ->title_prod}}</p>
+                    <img src="storage/img/{{$product ->img}}">
+                    <p>{{$product ->title}}</p>
                     <span>₽{{$product ->cost}}</span>
                     <a style="color:#FCEE0A;" href="/product/{{$product ->id}}">Купить</a>
                 </div>
