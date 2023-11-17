@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CatalogController;
@@ -30,14 +31,10 @@ Route::get('/catalog', [CatalogController::class,'Products'] );
 
 Route::get('/basket', [MainController::class,'basket'] );
 
-Route::get('/basket', [MainController::class,'basket'] );
-
 
 Route::get('/product', [MainController::class,'product'] );
 
 Route::get('/catalog', [MainController::class,'catalog'] );
-
-Route::get('/basket', [MainController::class,'basket'] );
 
 Route::get('/autho', [AuthController::class, 'auth']);
 
@@ -67,13 +64,12 @@ Route::get("/admin",[AdminController::class, 'index']) -> name("admin");
 Route::post("/addproduct",[AdminController::class, 'addproduct']);
 
 
-Route::get('/admin/ordersDeny', [AdminController::class,'ordersDeny'] );
-Route::get('admin/ordersDeny/{id_status}', [AdminController::class,'orderDeny'] )->name('ordersDeny');
+Route::get('/admin/ordersDeny', [OrderController::class,'ordersDeny'] );
+Route::get('admin/ordersDeny/{id_status}', [OrderController::class,'orderDeny'] )->name('ordersDeny');
 
 
-Route::get('/admin/ordersNew', [AdminController::class,'ordersNew'] );
-Route::get('/admin/ordersProg', [AdminController::class,'ordersProg'] );
-Route::get('/admin/ordersSub', [AdminController::class,'ordersSub'] );
+Route::get('/admin/ordersNew', [OrderController::class,'ordersNew'] );
+Route::get('/admin/ordersSub', [OrderController::class,'ordersSub'] );
 
 Route::get('admin/serviceRedact', [AdminController::class,'serviceRedact'] )->name('serviceRedact');
 
