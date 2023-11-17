@@ -25,19 +25,19 @@
       <td class="align-middle">{{$order ->name}}</td>
       <td class="align-middle">{{$order ->phone}}</td>
       <td class="align-middle">{{$order ->email}}</td>
-      <td class="align-middle">{{$order ->title_prod}}</td>
-      <td class="align-middle">{{$order ->amoint}}</td>
-      <td class="align-middle">{{$order ->sum}}</td>
-      <td class="align-middle">{{$order ->title_pay}}</td>
+      <td class="align-middle">{{$order ->title}}</td>
+      <td class="align-middle">{{$order ->amount}}</td>
+      <td class="align-middle">{{$order ->title}}</td>
+      <td class="align-middle">{{$order ->title}}</td>
       <td class="align-middle">{{$order ->address}}</td>
       <td class="align-middle">{{$order ->created_at}}</td>
-      <td class="align-middle"><a href=""><button type="submit" class="btn btn-success">Принять</button></a></td>
-      <td class="align-middle"><a href="{{ route('ordersDeny', ['id_status' => $order->id]) }}"><button type="submit" class="btn btn-danger">Отклонить</button></a></td>
+      <td class="align-middle"><a href="{{ route('UpdateSuc', ['id_status' => $order->id]) }}"><button type="submit" class="btn btn-success">Принять</button></a></td>
+      <td class="align-middle"><a href="{{ route('Updatedeny', ['id_status' => $order->id]) }}"><button type="submit" class="btn btn-danger">Отклонить</button></a></td>
     </tr>
     @empty
       <p>Тут нет заявок.</p>
     @endforelse
-
+{{ $orders->withQueryString()->links('pagination::bootstrap-5') }}
   </tbody>
   </table>
 </div>

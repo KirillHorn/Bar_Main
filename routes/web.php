@@ -65,8 +65,8 @@ Route::post("/addproduct",[AdminController::class, 'addproduct']);
 
 
 Route::get('/admin/ordersDeny', [OrderController::class,'ordersDeny'] );
-Route::get('admin/ordersDeny/{id_status}', [OrderController::class,'orderDeny'] )->name('ordersDeny');
-
+Route::get('admin/ordersDeny/{id_status}', [OrderController::class,'Updatedeny'] )->name("Updatedeny");
+Route::get('admin/ordersSub/{id_status}', [OrderController::class,'UpdateSuc'] )->name("UpdateSuc");
 
 Route::get('/admin/ordersNew', [OrderController::class,'ordersNew'] );
 Route::get('/admin/ordersSub', [OrderController::class,'ordersSub'] );
